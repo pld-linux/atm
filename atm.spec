@@ -1,4 +1,4 @@
-# $Revision: 1.17 $ $Date: 2001-07-06 14:07:32 $
+# $Revision: 1.18 $ $Date: 2001-07-18 03:42:42 $
 Summary:	ATM on Linux
 Summary(pl):	Obs³uga sieci ATM w Linuxie
 Name:		atm
@@ -6,11 +6,12 @@ Version:	0.62
 Release:	1
 License:	GPL
 Group:		Networking
+Group(de):	Netzwerkwesen
 Group(pl):	Sieciowe
 Source0:	ftp://lrcftp.epfl.ch/pub/linux/atm/dist/%{name}-%{version}.tar.gz
 Source1:	%{name}-pldrc.tar.gz
 Patch0:		%{name}-opt.patch
-Patch1:	        %{name}-OPEN_MAX.patch
+Patch1:		%{name}-OPEN_MAX.patch
 Icon:		atm-logo.gif
 URL:		http://ica1www.epfl.ch/linux-atm/
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
@@ -40,6 +41,7 @@ Emulation (LANE), Multiprotocol Over ATM (MPOA) i inne rozmaito¶ci.
 Summary:	ATM on Linux - developer's package
 Summary(pl):	Obs³uga sieci ATM w Linuxie - biblioteki i pliki nag³ówkowe
 Group:		Development/Libraries
+Group(de):	Entwicklung/Libraries
 Group(fr):	Development/Librairies
 Group(pl):	Programowanie/Biblioteki
 Requires:	%{name} = %{version}
@@ -86,10 +88,8 @@ install config/pld/network-scripts/{ifup-atm,ifup-lec,ifdown-lec} \
 install config/pld/interfaces/{ifcfg-atm0,ifcfg-lec0} \
 		$RPM_BUILD_ROOT/etc/sysconfig/interfaces 
  
-strip --strip-unneeded $RPM_BUILD_ROOT{%{_bindir},%{_sbindir}}/*
+gzip -9nf doc/usage.txt BUGS CREDITS CHANGES README config/pld/README.PLD
 
-gzip -9nf $RPM_BUILD_ROOT%{_mandir}/man*/* \
-	doc/usage.txt BUGS CREDITS CHANGES README config/pld/README.PLD
 %clean
 rm -rf $RPM_BUILD_ROOT
 
@@ -112,9 +112,9 @@ fi
 %doc doc/usage.txt.gz *.gz config/pld/README.PLD.gz
 %config(noreplace) %verify(not size mtime md5) %{_sysconfdir}/atm/*
 %config(noreplace) %verify(not size mtime md5) %{_sysconfdir}/hosts.atm
-%config(noreplace) %verify(not size mtime md5) /etc//sysconfig/interfaces/*
+%config(noreplace) %verify(not size mtime md5) /etc/sysconfig/interfaces/*
 %attr(640,root,root) %config(noreplace) %verify(not size mtime md5) /etc/sysconfig/atm
-%attr(755,root,root) /etc//sysconfig/network-scripts/*
+%attr(755,root,root) /etc/sysconfig/network-scripts/*
 %attr(754,root,root) /etc/rc.d/init.d/atm
 %config %{_sysconfdir}/e164_cc
 %attr(755,root,root) %{_bindir}/*
