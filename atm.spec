@@ -1,9 +1,9 @@
-# $Revision: 1.13.2.7 $ $Date: 2000-11-17 15:43:07 $
+# $Revision: 1.13.2.8 $ $Date: 2000-12-21 15:11:47 $
 Summary:	ATM on Linux
 Summary(pl):	Obs³uga sieci ATM w Linuxie
 Name:		atm
 Version:	0.78
-Release:	4
+Release:	5
 License:	GPL
 Group:		Networking
 Group(de):	Netzwerkwesen
@@ -14,6 +14,7 @@ Source1:	%{name}-0.78.2-PLDrc.tar.gz
 Patch0:		%{name}-opt.patch
 Patch1:		%{name}-OPEN_MAX.patch
 Patch2:		%{name}-syslog.patch
+Patch3:		%{name}-lresolv.patch
 Icon:		atm-logo.gif
 Requires:	rc-scripts >= 0.2.9
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
@@ -61,6 +62,7 @@ dla Linuxa.
 %patch0 -p1
 %patch1 -p1
 %patch2 -p1
+%patch3 -p1
 
 %build
 # Test it before removing!
