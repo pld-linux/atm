@@ -1,4 +1,4 @@
-# $Revision: 1.13.2.11 $ $Date: 2001-05-21 16:49:11 $
+# $Revision: 1.13.2.12 $ $Date: 2001-06-05 19:02:32 $
 Summary:	ATM on Linux
 Summary(pl):	Obs³uga sieci ATM w Linuxie
 Name:		atm
@@ -18,7 +18,6 @@ Patch2:		%{name}-syslog.patch
 Patch3:		%{name}-shared.patch
 Patch4:		%{name}-br2684ctl-syslog.patch
 Icon:		atm-logo.gif
-Requires:	rc-scripts >= 0.2.9
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
  
 %description
@@ -53,7 +52,7 @@ Requires:	%{name} = %{version}
 
 %description devel
 Libraries and header files needed for development ATM applications for
-Linux
+Linux.
 
 %description -l pl devel
 Biblioteki i pliki nag³ówkowe niezbêdne do opracowywania aplikacji ATM
@@ -69,11 +68,24 @@ Group(pl):	Programowanie/Biblioteki
 Requires:	%{name}-devel = %{version}
 
 %description static
-Static libraries needed for development ATM applications for Linux
+Static libraries needed for development ATM applications for Linux.
 
 %description -l pl static
 Biblioteki statyczne niezbêdne do opracowywania aplikacji ATM
 dla Linuxa.
+
+%package rc-scripts
+Summary:        ATM on Linux - rc-scripts
+Summary(pl):    Obs³uga sieci ATM w Linuxie - skrypty startowe
+Group:          Base
+Requires:       %{name} = %{version}
+Requires:	rc-scripts >= 0.2.9
+
+%description rc-scripts
+rc-scripts for ATM support.
+
+%description -l pl rc-scripts
+Skrypty startowe dla wsparcia obs³ugi ATM.
 
 %prep
 %setup -q -n atm -b1
@@ -119,12 +131,14 @@ rm -rf $RPM_BUILD_ROOT
 
 %post
 /sbin/ldconfig
+
+%post rc-scripts
 /sbin/chkconfig --add atm
 if [ -f /var/lock/subsys/atm ]; then
 	/etc/rc.d/init.d/atm restart 1>&2
 fi
 
-%preun
+%preun rc-scripts
 if [ "$1" = "0" ]; then
 	if [ -f /var/lock/subsys/atm ]; then
 		/etc/rc.d/init.d/atm stop 1>&2
@@ -136,13 +150,10 @@ fi
 
 %files
 %defattr(644,root,root,755)
-%doc doc/usage.txt.gz *.gz config/pld/README.PLD.gz
-%doc config/pld/interfaces/ifcfg-*
-%config(noreplace) %verify(not size mtime md5) %{_sysconfdir}/atm/*
+%doc doc/usage.txt.gz *.gz
 %config(noreplace) %verify(not size mtime md5) %{_sysconfdir}/hosts.atm
-%attr(640,root,root) %config(noreplace) %verify(not size mtime md5) %{_sysconfdir}/sysconfig/atm
-%attr(755,root,root) %{_sysconfdir}/sysconfig/network-scripts/*
-%attr(754,root,root) %{_sysconfdir}/rc.d/init.d/atm
+%attr(750,root,root) %dir %{_sysconfdir}/atm
+%attr(640,root,root) %config(noreplace) %verify(not size mtime md5) %{_sysconfdir}/atm/*
 %config %{_sysconfdir}/e164_cc
 %attr(755,root,root) %{_bindir}/*
 %attr(755,root,root) %{_sbindir}/*
@@ -158,3 +169,10 @@ fi
 %files static
 %defattr(644,root,root,755)
 %{_libdir}/*.a
+
+%files rc-scripts
+%defattr(644,root,root,755)
+%doc config/pld/README.PLD.gz config/pld/interfaces/ifcfg-*
+%attr(640,root,root) %config(noreplace) %verify(not size mtime md5) %{_sysconfdir}/sysconfig/atm
+%attr(755,root,root) %{_sysconfdir}/sysconfig/network-scripts/*
+%attr(754,root,root) %{_sysconfdir}/rc.d/init.d/atm
