@@ -1,4 +1,4 @@
-# $Revision: 1.4 $ $Date: 1999-09-05 12:20:59 $
+# $Revision: 1.5 $ $Date: 1999-11-02 12:54:38 $
 Summary:	ATM on Linux
 Summary(pl):	Obs³uga sieci ATM w Linuxie
 Name:		ATM
@@ -7,8 +7,7 @@ Release:	1
 Copyright:	GPL
 Group:		Networking
 Group(pl):	Sieciowe
-Url:		ftp://lrcftp.epfl.ch/pub/linux/atm/dist/%{name}-%{version}.tar.gz
-Source0:	atm-%{version}.tar.gz
+Source0		ftp://lrcftp.epfl.ch/pub/linux/atm/dist/atm-%{version}.tar.gz
 Source1:	ATM-pldrc.tar.gz
 Buildroot:	/tmp/%{name}-%{version}-root
  
@@ -57,41 +56,39 @@ make
 rm -rf $RPM_BUILD_ROOT
 
 make \
-    INSTROOT=${RPM_BUILD_ROOT} \
-    INSTPREFIX=${RPM_BUILD_ROOT}%{_prefix} \
-    INSTMAN=${RPM_BUILD_ROOT}%{_mandir} \
+    INSTROOT=$RPM_BUILD_ROOT \
+    INSTPREFIX=$RPM_BUILD_ROOT%{_prefix} \
+    INSTMAN=$RPM_BUILD_ROOT%{_mandir} \
     install
 
-strip --strip-unneeded ${RPM_BUILD_ROOT}%{_prefix}{/bin/*,/sbin/*}
+strip --strip-unneeded $RPM_BUILD_ROOT{%{_bindir},%{_sbindir}}/*
 
-gzip -9nf ${RPM_BUILD_ROOT}%{_mandir}/man*/* 
+gzip -9nf $RPM_BUILD_ROOT%{_mandir}/man*/* 
 gzip -9nf doc/usage.txt BUGS CREDITS CHANGES README config/pld/README.PLD
 
-install -d -m 0755 ${RPM_BUILD_ROOT}/etc 
-install -c -m 0644 config/common/hosts.atm ${RPM_BUILD_ROOT}/etc
-install -c -m 0644 config/common/e164_cc ${RPM_BUILD_ROOT}/etc
+install -d -m 0755 $RPM_BUILD_ROOT/etc 
+install -c -m 0644 config/common/hosts.atm $RPM_BUILD_ROOT/etc
+install -c -m 0644 config/common/e164_cc $RPM_BUILD_ROOT/etc
 
-install -d -m 0755 ${RPM_BUILD_ROOT}/etc/atm
-install -d -m 0755 ${RPM_BUILD_ROOT}/etc/sysconfig
-install -d -m 0755 ${RPM_BUILD_ROOT}/etc/sysconfig/network-scripts
-install -d -m 0755 ${RPM_BUILD_ROOT}/etc/sysconfig/interfaces
-install -d -m 0755 ${RPM_BUILD_ROOT}/etc/rc.d/init.d
-install -c -m 0644 config/pld/atm/* ${RPM_BUILD_ROOT}/etc/atm/
-install -c -m 0755 config/pld/init.d/atm ${RPM_BUILD_ROOT}/etc/rc.d/init.d/
-install -c -m 0644 config/pld/sysconfig/atm ${RPM_BUILD_ROOT}/etc/sysconfig/
+install -d -m 0755 $RPM_BUILD_ROOT/etc/atm
+install -d -m 0755 $RPM_BUILD_ROOT/etc/sysconfig
+install -d -m 0755 $RPM_BUILD_ROOT/etc/sysconfig/network-scripts
+install -d -m 0755 $RPM_BUILD_ROOT/etc/sysconfig/interfaces
+install -d -m 0755 $RPM_BUILD_ROOT/etc/rc.d/init.d
+install -c -m 0644 config/pld/atm/* $RPM_BUILD_ROOT/etc/atm/
+install -c -m 0755 config/pld/init.d/atm $RPM_BUILD_ROOT/etc/rc.d/init.d/
+install -c -m 0644 config/pld/sysconfig/atm $RPM_BUILD_ROOT/etc/sysconfig/
 install -c -m 0755 config/pld/network-scripts/{ifup-atm,ifup-lec,ifdown-atm,ifdown-lec} \
-	${RPM_BUILD_ROOT}/etc/sysconfig/network-scripts
+	$RPM_BUILD_ROOT/etc/sysconfig/network-scripts
 install -c -m 0644 config/pld/interfaces/{ifcfg-atm0,ifcfg-lec0} \
-	${RPM_BUILD_ROOT}/etc/sysconfig/interfaces 
-install -d ${RPM_BUILD_ROOT}/var/log/atm
+	$RPM_BUILD_ROOT/etc/sysconfig/interfaces 
+install -d $RPM_BUILD_ROOT/var/log/atm
  
 %clean
 rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(644,root,root,755) 
-%attr(755,root,root) /usr/bin
-%attr(755,root,root) /usr/sbin
 %doc doc/usage.txt.gz *.gz config/pld/README.PLD.gz
 %{_mandir}/man*/*
 %config /etc/e164_cc
@@ -102,8 +99,10 @@ rm -rf $RPM_BUILD_ROOT
 %config /etc/atm/*
 %config(noreplace) /etc/sysconfig/interfaces/*
 %attr(755,root,root) /var/log/atm
+%attr(755,root,root) /usr/bin/*
+%attr(755,root,root) /usr/sbin/*
 
 %files devel
 %defattr(644,root,root,755) 
-%attr(644,root,root) /usr/include/*
-%attr(644,root,root) /usr/lib/*
+/usr/include/*
+/usr/lib/*
