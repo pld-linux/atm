@@ -1,4 +1,4 @@
-# $Revision: 1.2 $ $Date: 1999-08-30 09:54:55 $
+# $Revision: 1.3 $ $Date: 1999-09-03 08:04:36 $
 Summary:	ATM on Linux
 Summary(pl):	Obs³uga sieci ATM w Linuxie
 Name:		ATM
@@ -11,7 +11,7 @@ Url:		ftp://lrcftp.epfl.ch/pub/linux/atm/dist/%{name}-%{version}.tar.gz
 Source0:	atm-%{version}.tar.gz
 Source1:	ATM-pldrc.tar.gz
 Buildroot:	/tmp/%{name}-%{version}-root
-
+ 
 %description
 ATM (Asynchronous Transfer Mode) networking for Linux is still under 
 development now but it works quite stable now and will most probably be 
