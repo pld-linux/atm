@@ -1,10 +1,11 @@
---- atm/mpoad/io.c~	Tue Jan 18 22:33:07 2000
-+++ atm/mpoad/io.c	Sat Nov  4 04:17:12 2000
-@@ -5,6 +5,7 @@
- #include <string.h>    /* for strerror() */
- #include <errno.h>
- #include <sys/ioctl.h>
-+#include <linux/limits.h> /* for OPEN_MAX   */
- #include <sys/param.h> /* for OPEN_MAX   */
- #if __GLIBC__ >= 2
- #include <sys/poll.h>
+diff -urN atm.orig/mpoad/io.c atm/mpoad/io.c
+--- atm.orig/mpoad/io.c	Sat Dec  5 01:43:15 1998
++++ atm/mpoad/io.c	Fri Jul  6 16:09:32 2001
+@@ -26,6 +26,7 @@
+ #include "k_interf.h"
+ #include "io.h"
+ #include "get_vars.h"
++#define OPEN_MAX 1024
+ 
+ #ifdef BROKEN_POLL
+ #include "poll2select.h"
