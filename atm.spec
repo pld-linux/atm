@@ -1,4 +1,4 @@
-# $Revision: 1.27 $ $Date: 2002-02-02 23:50:53 $
+# $Revision: 1.28 $ $Date: 2002-02-22 23:28:42 $
 Summary:	ATM on Linux
 Summary(pl):	Obs≥uga sieci ATM w Linuxie
 Name:		atm
@@ -6,10 +6,6 @@ Version:	0.62
 Release:	1
 License:	GPL
 Group:		Networking
-Group(de):	Netzwerkwesen
-Group(es):	Red
-Group(pl):	Sieciowe
-Group(pt_BR):	Rede
 Source0:	ftp://lrcftp.epfl.ch/pub/linux/atm/dist/%{name}-%{version}.tar.gz
 Source1:	%{name}-pldrc.tar.gz
 Patch0:		%{name}-opt.patch
@@ -44,13 +40,6 @@ Over ATM (MPOA) i inne rozmaito∂ci.
 Summary:	ATM on Linux - developer's package
 Summary(pl):	Obs≥uga sieci ATM w Linuxie - biblioteki i pliki nag≥Ûwkowe
 Group:		Development/Libraries
-Group(de):	Entwicklung/Libraries
-Group(es):	Desarrollo/Bibliotecas
-Group(fr):	Development/Librairies
-Group(pl):	Programowanie/Biblioteki
-Group(pt_BR):	Desenvolvimento/Bibliotecas
-Group(ru):	Ú¡⁄“¡¬œ‘À¡/‚…¬Ã…œ‘≈À…
-Group(uk):	Úœ⁄“œ¬À¡/‚¶¬Ã¶œ‘≈À…
 Requires:	%{name} = %{version}
 
 %description devel
