@@ -1,20 +1,21 @@
-# $Revision: 1.13.2.6 $ $Date: 2000-11-06 19:46:00 $
+# $Revision: 1.13.2.7 $ $Date: 2000-11-17 15:43:07 $
 Summary:	ATM on Linux
 Summary(pl):	Obs³uga sieci ATM w Linuxie
 Name:		atm
 Version:	0.78
-Release:	3
+Release:	4
 License:	GPL
 Group:		Networking
 Group(de):	Netzwerkwesen
 Group(pl):	Sieciowe
 URL:		http://ica1www.epfl.ch/linux-atm/
 Source0:	ftp://lrcftp.epfl.ch/pub/linux/atm/dist/%{name}-%{version}.tar.gz
-Source1:	%{name}-0.78.1-PLDrc.tar.gz
+Source1:	%{name}-0.78.2-PLDrc.tar.gz
 Patch0:		%{name}-opt.patch
 Patch1:		%{name}-OPEN_MAX.patch
+Patch2:		%{name}-syslog.patch
 Icon:		atm-logo.gif
-Requires:	rc-scripts > 0.2.7
+Requires:	rc-scripts >= 0.2.9
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
  
 %description
@@ -59,6 +60,7 @@ dla Linuxa.
 %setup -q -n atm -b 1
 %patch0 -p1
 %patch1 -p1
+%patch2 -p1
 
 %build
 # Test it before removing!
@@ -81,7 +83,7 @@ install -d $RPM_BUILD_ROOT%{_sysconfdir}/{atm,sysconfig/{interfaces,network-scri
 install config/common/hosts.atm $RPM_BUILD_ROOT%{_sysconfdir}
 install config/common/e164_cc $RPM_BUILD_ROOT%{_sysconfdir}
 
-install config/pld/atm/{*.conf,services} $RPM_BUILD_ROOT%{_sysconfdir}/atm/
+install config/pld/atm/*.conf $RPM_BUILD_ROOT%{_sysconfdir}/atm/
 install config/pld/init.d/atm $RPM_BUILD_ROOT/etc/rc.d/init.d/
 install config/pld/sysconfig/atm $RPM_BUILD_ROOT/etc/sysconfig/
 install config/pld/network-scripts/{ifup-*,ifdown-*} \
