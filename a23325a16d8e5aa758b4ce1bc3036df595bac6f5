@@ -1,0 +1,3 @@
+- upgraded to version 0.62, version 0.59 still exist because of 2.2 kernel
+  patch
+- ATM-zepelin-sel.patch removed, now included in the distribution file
