@@ -1,13 +1,13 @@
-# $Revision: 1.36 $ $Date: 2003-08-06 16:30:22 $
+# $Revision: 1.37 $ $Date: 2003-10-06 20:58:13 $
 Summary:	ATM on Linux
 Summary(pl):	Obs³uga sieci ATM w Linuksie
 Name:		atm
-Version:	0.62
+Version:	0.78
 Release:	1
 License:	GPL
 Group:		Networking
 Source0:	ftp://lrcftp.epfl.ch/pub/linux/atm/dist/%{name}-%{version}.tar.gz
-# Source0-md5:	8c2b00cb2c5d378dbd6253963d245442
+# Source0-md5:	64952e4d56285c0aeb12597d27884aff
 Source1:	%{name}-pldrc.tar.gz
 # Source1-md5:	c69820b03d8241e4cab33fef681df222
 Patch0:		%{name}-opt.patch
