@@ -1,4 +1,4 @@
-# $Revision: 1.12 $ $Date: 2000-03-28 16:54:15 $
+# $Revision: 1.13 $ $Date: 2000-04-01 11:14:23 $
 Summary:	ATM on Linux
 Summary(pl):	Obs³uga sieci ATM w Linuxie
 Name:		atm
@@ -12,7 +12,7 @@ Source1:	atm-pldrc.tar.gz
 Patch:		atm-opt.patch
 Icon:		atm-logo.gif
 URL:		http://ica1www.epfl.ch/linux-atm/
-Buildroot:	/tmp/%{name}-%{version}-root
+BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
  
 %description
 ATM (Asynchronous Transfer Mode) networking for Linux is still under 
