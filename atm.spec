@@ -1,4 +1,4 @@
-# $Revision: 1.25 $ $Date: 2002-01-18 02:12:26 $
+# $Revision: 1.26 $ $Date: 2002-02-02 19:55:47 $
 Summary:	ATM on Linux
 Summary(pl):	ObsЁuga sieci ATM w Linuxie
 Name:		atm
@@ -43,8 +43,12 @@ Summary:	ATM on Linux - developer's package
 Summary(pl):	ObsЁuga sieci ATM w Linuxie - biblioteki i pliki nagЁСwkowe
 Group:		Development/Libraries
 Group(de):	Entwicklung/Libraries
+Group(es):	Desarrollo/Bibliotecas
 Group(fr):	Development/Librairies
 Group(pl):	Programowanie/Biblioteki
+Group(pt_BR):	Desenvolvimento/Bibliotecas
+Group(ru):	Разработка/Библиотеки
+Group(uk):	Розробка/Б╕бл╕отеки
 Requires:	%{name} = %{version}
 
 %description devel
