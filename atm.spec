@@ -1,4 +1,4 @@
-# $Revision: 1.18 $ $Date: 2001-07-18 03:42:42 $
+# $Revision: 1.19 $ $Date: 2001-07-25 16:30:41 $
 Summary:	ATM on Linux
 Summary(pl):	Obs³uga sieci ATM w Linuxie
 Name:		atm
@@ -94,18 +94,10 @@ gzip -9nf doc/usage.txt BUGS CREDITS CHANGES README config/pld/README.PLD
 rm -rf $RPM_BUILD_ROOT
 
 %post
-/sbin/chkconfig --add atm
-if [ -f /var/lock/subsys/atm ]; then
-	/etc/rc.d/init.d/atm restart 1>&2
-fi
+%chkconfig_post
 
 %preun
-if [ "$1" = "0" ]; then
-	if [ -f /var/lock/subsys/atm ]; then
-		/etc/rc.d/init.d/atm stop 1>&2
-	fi
-	/sbin/chkconfig --del atm
-fi
+%chkconfig_preun
 
 %files
 %defattr(644,root,root,755)
