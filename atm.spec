@@ -1,4 +1,4 @@
-# $Revision: 1.9 $ $Date: 2000-01-12 15:54:43 $
+# $Revision: 1.10 $ $Date: 2000-01-18 14:15:47 $
 Summary:	ATM on Linux
 Summary(pl):	Obs³uga sieci ATM w Linuxie
 Name:		atm
@@ -7,7 +7,7 @@ Release:	1
 Copyright:	GPL
 Group:		Networking
 Group(pl):	Sieciowe
-Source0:	ftp://lrcftp.epfl.ch/pub/linux/atm/dist/atm-%{version}.tar.gz
+Source0:	ftp://lrcftp.epfl.ch/pub/linux/atm/dist/%{name}-%{version}.tar.gz
 Source1:	atm-pldrc.tar.gz
 Patch:		atm-opt.patch
 Icon:		atm-logo.gif
@@ -53,6 +53,10 @@ Linuxa.
 %patch0 -p1
 
 %build
+# Test it before removing!
+# gcc 2.95.x with optimizations turned on miscompiles atm 0.62!!!
+RPM_OPT_FLAGS=""
+export RPM_OPT_FLAGS
 make depend
 make 
 
@@ -66,8 +70,6 @@ make install \
 	INSTPREFIX=$RPM_BUILD_ROOT%{_prefix} \
 	INSTMAN=$RPM_BUILD_ROOT%{_mandir}
 
-strip --strip-unneeded $RPM_BUILD_ROOT{%{_bindir},%{_sbindir}}/*
-
 install config/common/hosts.atm $RPM_BUILD_ROOT/etc
 install config/common/e164_cc $RPM_BUILD_ROOT/etc
 
@@ -79,24 +81,40 @@ install config/pld/network-scripts/{ifup-atm,ifup-lec,ifdown-atm,ifdown-lec} \
 install config/pld/interfaces/{ifcfg-atm0,ifcfg-lec0} \
 	$RPM_BUILD_ROOT/etc/sysconfig/interfaces 
  
+strip --strip-unneeded $RPM_BUILD_ROOT{%{_bindir},%{_sbindir}}/*
+
 gzip -9nf $RPM_BUILD_ROOT%{_mandir}/man*/* \
 	doc/usage.txt BUGS CREDITS CHANGES README config/pld/README.PLD
 %clean
 rm -rf $RPM_BUILD_ROOT
 
+%post
+/sbin/chkconfig --add atm
+if [ -f /var/lock/subsys/atm ]; then
+	/etc/rc.d/init.d/atm restart 1>&2
+fi
+
+%preun
+if [ "$1" = "0" ]; then
+	if [ -f /var/lock/subsys/atm ]; then
+		/etc/rc.d/init.d/atm stop 1>&2
+	fi
+	/sbin/chkconfig --del atm
+fi
+
 %files
 %defattr(644,root,root,755) 
 %doc doc/usage.txt.gz *.gz config/pld/README.PLD.gz
+%config(noreplace) %verify(not size mtime md5) %{_sysconfdir}/atm/*
+%config(noreplace) %verify(not size mtime md5) %{_sysconfdir}/hosts.atm
+%config(noreplace) %verify(not size mtime md5) %{_sysconfdir}/sysconfig/interfaces/*
+%attr(640,root,root) %config(noreplace) %verify(not size mtime md5) %{_sysconfdir}/sysconfig/atm
+%attr(755,root,root) %{_sysconfdir}/sysconfig/network-scripts/*
+%attr(754,root,root) %{_sysconfdir}/rc.d/init.d/atm
+%config %{_sysconfdir}/e164_cc
 %attr(755,root,root) %{_bindir}/*
 %attr(755,root,root) %{_sbindir}/*
-%config /etc/e164_cc
-%config(noreplace) /etc/hosts.atm
-%attr(755,root,root) %config /etc/sysconfig/network-scripts/*
-%attr(754,root,root) %config /etc/rc.d/init.d/atm
-%attr(640,root,root) %config /etc/sysconfig/atm
-%config /etc/atm/*
-%config(noreplace) /etc/sysconfig/interfaces/*
-%dir /var/log/atm
+%attr(751,root,root) /var/log/atm
 %{_mandir}/man*/*
 
 %files devel
