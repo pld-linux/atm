@@ -1,4 +1,4 @@
-# $Revision: 1.19 $ $Date: 2001-07-25 16:30:41 $
+# $Revision: 1.20 $ $Date: 2001-07-25 22:51:57 $
 Summary:	ATM on Linux
 Summary(pl):	Obs³uga sieci ATM w Linuxie
 Name:		atm
@@ -94,10 +94,10 @@ gzip -9nf doc/usage.txt BUGS CREDITS CHANGES README config/pld/README.PLD
 rm -rf $RPM_BUILD_ROOT
 
 %post
-%chkconfig_post
+%chkconfig_add
 
 %preun
-%chkconfig_preun
+%chkconfig_del
 
 %files
 %defattr(644,root,root,755)
