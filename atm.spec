@@ -1,4 +1,4 @@
-# $Revision: 1.10 $ $Date: 2000-01-18 14:15:47 $
+# $Revision: 1.11 $ $Date: 2000-01-18 15:47:50 $
 Summary:	ATM on Linux
 Summary(pl):	Obs³uga sieci ATM w Linuxie
 Name:		atm
@@ -76,10 +76,10 @@ install config/common/e164_cc $RPM_BUILD_ROOT/etc
 install config/pld/atm/* $RPM_BUILD_ROOT/etc/atm/
 install config/pld/init.d/atm $RPM_BUILD_ROOT/etc/rc.d/init.d/
 install config/pld/sysconfig/atm $RPM_BUILD_ROOT/etc/sysconfig/
-install config/pld/network-scripts/{ifup-atm,ifup-lec,ifdown-atm,ifdown-lec} \
-	$RPM_BUILD_ROOT/etc/sysconfig/network-scripts
+install config/pld/network-scripts/{ifup-atm,ifup-lec,ifdown-lec} \
+		$RPM_BUILD_ROOT/etc/sysconfig/network-scripts
 install config/pld/interfaces/{ifcfg-atm0,ifcfg-lec0} \
-	$RPM_BUILD_ROOT/etc/sysconfig/interfaces 
+		$RPM_BUILD_ROOT/etc/sysconfig/interfaces 
  
 strip --strip-unneeded $RPM_BUILD_ROOT{%{_bindir},%{_sbindir}}/*
 
