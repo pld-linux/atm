@@ -1,5 +1,13 @@
 --- atm/pppbr-001212-br2684ctl.c~	Thu Jan 11 17:21:03 2001
 +++ atm/pppbr-001212-br2684ctl.c	Thu Jan 11 17:30:38 2001
+@@ -4,6 +4,7 @@
+ #include <errno.h>
+ #include <sys/ioctl.h>
+ #include <string.h>
++#include <syslog.h>
+ #include <atm.h>
+ #include <linux/atmdev.h>
+ #include <linux/atmbr2684.h>
 @@ -16,7 +16,7 @@
  
  void fatal(char *str, int i)
