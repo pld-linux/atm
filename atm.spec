@@ -1,8 +1,8 @@
-# $Revision: 1.13 $ $Date: 2000-04-01 11:14:23 $
+# $Revision: 1.14 $ $Date: 2000-04-20 13:38:45 $
 Summary:	ATM on Linux
 Summary(pl):	Obs³uga sieci ATM w Linuxie
 Name:		atm
-Version:	0.67
+Version:	0.62
 Release:	1
 Copyright:	GPL
 Group:		Networking
