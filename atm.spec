@@ -1,6 +1,6 @@
-# $Revision: 1.30 $ $Date: 2002-04-25 15:49:16 $
+# $Revision: 1.31 $ $Date: 2002-07-03 09:24:04 $
 Summary:	ATM on Linux
-Summary(pl):	Obs³uga sieci ATM w Linuxie
+Summary(pl):	Obs³uga sieci ATM w Linuksie
 Name:		atm
 Version:	0.62
 Release:	1
@@ -26,7 +26,7 @@ services, i.e. Classical IP (IP over ATM), LAN Emulation clients and
 servers, Multiprotocol Over ATM (MPOA) and some other goodies.
 
 %description -l pl
-Obs³uga sieci ATM (Asynchronous Transfer Mode) w Linuxie mimo i¿ jest
+Obs³uga sieci ATM (Asynchronous Transfer Mode) w Linuksie mimo i¿ jest
 jeszcze w stadium alfa dzia³a ju¿ bardzo stabilnie i
 najprawdopodobniej zostanie w³±czona do j±der serii 2.4.x. W Linuksie
 PLD sk³ada siê ona z ³at (patches) do bie¿±cej wersji j±dra
@@ -38,7 +38,7 @@ Emulation (LANE), Multiprotocol Over ATM (MPOA) i inne rozmaito¶ci.
 
 %package devel
 Summary:	ATM on Linux - developer's package
-Summary(pl):	Obs³uga sieci ATM w Linuxie - biblioteki i pliki nag³ówkowe
+Summary(pl):	Obs³uga sieci ATM w Linuksie - biblioteki i pliki nag³ówkowe
 Group:		Development/Libraries
 Requires:	%{name} = %{version}
 
