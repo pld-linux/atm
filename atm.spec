@@ -1,4 +1,4 @@
-# $Revision: 1.22 $ $Date: 2001-09-24 09:49:16 $
+# $Revision: 1.23 $ $Date: 2001-10-08 08:15:22 $
 Summary:	ATM on Linux
 Summary(pl):	Obs³uga sieci ATM w Linuxie
 Name:		atm
@@ -70,7 +70,7 @@ export RPM_OPT_FLAGS
 
 %install
 rm -rf $RPM_BUILD_ROOT
-install -d $RPM_BUILD_ROOT/etc/sysconfig/{interfaces,network-scripts},rc.d/init.d}} \
+install -d $RPM_BUILD_ROOT/etc/{sysconfig/{interfaces,network-scripts}},rc.d/init.d} \
 	$RPM_BUILD_ROOT{/var/log/atm,%{_sysconfdir}/atm}
 
 %{__make} install \
