@@ -1,9 +1,9 @@
-# $Revision: 1.13.2.9 $ $Date: 2001-01-12 14:15:21 $
+# $Revision: 1.13.2.10 $ $Date: 2001-01-18 15:04:13 $
 Summary:	ATM on Linux
 Summary(pl):	Obs³uga sieci ATM w Linuxie
 Name:		atm
 Version:	0.78
-Release:	6
+Release:	7
 License:	GPL
 Group:		Networking
 Group(de):	Netzwerkwesen
@@ -15,7 +15,7 @@ Source2:	http://home.sch.bme.hu/~cell/br2684/dist/001212/pppbr-001212-br2684ctl.
 Patch0:		%{name}-opt.patch
 Patch1:		%{name}-OPEN_MAX.patch
 Patch2:		%{name}-syslog.patch
-Patch3:		%{name}-lresolv.patch
+Patch3:		%{name}-shared.patch
 Patch4:		%{name}-br2684ctl-syslog.patch
 Icon:		atm-logo.gif
 Requires:	rc-scripts >= 0.2.9
@@ -59,6 +59,22 @@ Linux
 Biblioteki i pliki nag³ówkowe niezbêdne do opracowywania aplikacji ATM
 dla Linuxa.
 
+%package static
+Summary:	ATM on Linux - static libraries
+Summary(pl):	Obs³uga sieci ATM w Linuxie - biblioteki statyczne
+Group:		Development/Libraries
+Group(de):	Entwicklung/Libraries
+Group(fr):	Development/Librairies
+Group(pl):	Programowanie/Biblioteki
+Requires:	%{name}-devel = %{version}
+
+%description static
+Static libraries needed for development ATM applications for Linux
+
+%description -l pl static
+Biblioteki statyczne niezbêdne do opracowywania aplikacji ATM
+dla Linuxa.
+
 %prep
 %setup -q -n atm -b1
 install -m644 %{SOURCE2} .
@@ -69,14 +85,10 @@ install -m644 %{SOURCE2} .
 %patch4 -p1
 
 %build
-# Test it before removing!
-# gcc 2.95.x with optimizations turned on miscompiles atm 0.62!!!
-#RPM_OPT_FLAGS=""
-#export RPM_OPT_FLAGS
 %{__make} depend
 %{__make} CFLAGS_OPT="$RPM_OPT_FLAGS"
 
-gcc $RPM_OPT_FLAGS pppbr-001212-br2684ctl.c -o br2684ctl -lresolv -L./lib -latm
+gcc $RPM_OPT_FLAGS -I./lib pppbr-001212-br2684ctl.c -o br2684ctl -lresolv -L./lib -latm
 
 %install
 rm -rf $RPM_BUILD_ROOT
@@ -106,6 +118,7 @@ gzip -9nf doc/usage.txt BUGS CREDITS CHANGES README config/pld/README.PLD \
 rm -rf $RPM_BUILD_ROOT
 
 %post
+/sbin/ldconfig
 /sbin/chkconfig --add atm
 if [ -f /var/lock/subsys/atm ]; then
 	/etc/rc.d/init.d/atm restart 1>&2
@@ -119,6 +132,8 @@ if [ "$1" = "0" ]; then
 	/sbin/chkconfig --del atm
 fi
 
+%postun -p /sbin/ldconfig
+
 %files
 %defattr(644,root,root,755)
 %doc doc/usage.txt.gz *.gz config/pld/README.PLD.gz
@@ -131,10 +146,15 @@ fi
 %config %{_sysconfdir}/e164_cc
 %attr(755,root,root) %{_bindir}/*
 %attr(755,root,root) %{_sbindir}/*
+%attr(755,root,root) %{_libdir}/lib*.so.*.*
 %attr(751,root,root) /var/log/atm
 %{_mandir}/man*/*
 
 %files devel
 %defattr(644,root,root,755)
+%attr(755,root,root) %{_libdir}/lib*.so
 %{_includedir}/*
-%{_libdir}/*
+
+%files static
+%defattr(644,root,root,755)
+%{_libdir}/*.a
