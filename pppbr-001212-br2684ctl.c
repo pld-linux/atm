@@ -34,7 +34,7 @@ int create_br(char *nstr)
 	num=atoi(nstr);
 	if( num>=0 && num<1234567890){
 	   struct atm_newif_br2684 ni;
-	   ni.backend_num = ATM_BACKEND_BR_2684;
+	   ni.backend_num = ATM_BACKEND_BR2684;
 	   ni.media = BR2684_MEDIA_ETHERNET;
 	   ni.mtu = 1500;
 	   sprintf(ni.ifname, "nas%d", num);
@@ -94,7 +94,7 @@ int assign_vcc(char *astr, int encap, int bufsize)
 
            /* attach the vcc to device: */
 
-    be.backend_num = ATM_BACKEND_BR_2684;
+    be.backend_num = ATM_BACKEND_BR2684;
     be.ifspec.method = BR2684_FIND_BYIFNAME;
     sprintf(be.ifspec.spec.ifname, "nas%d", lastitf);
     be.fcs_in = BR2684_FCSIN_NO;
