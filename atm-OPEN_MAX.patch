@@ -1,0 +1,10 @@
+--- atm/mpoad/io.c~	Tue Jan 18 22:33:07 2000
++++ atm/mpoad/io.c	Sat Nov  4 04:17:12 2000
+@@ -5,6 +5,7 @@
+ #include <string.h>    /* for strerror() */
+ #include <errno.h>
+ #include <sys/ioctl.h>
++#include <linux/limits.h> /* for OPEN_MAX   */
+ #include <sys/param.h> /* for OPEN_MAX   */
+ #if __GLIBC__ >= 2
+ #include <sys/poll.h>

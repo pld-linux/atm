@@ -1,0 +1,43 @@
+diff -ur atm.orig/Rules.make atm/Rules.make
+--- atm.orig/Rules.make	Tue Aug 24 00:00:00 1999
++++ atm/Rules.make	Wed Dec 29 20:07:03 1999
+@@ -56,7 +56,6 @@
+   # -Wmissing-prototypes (linux/byteorder is broken)
+   # -Wmissing-declarations (gcc 2.6.x only)
+   # -Wconversion (breaks inline)
+-CFLAGS_OPT=-O2
+ CFLAGS=$(CFLAGS_NOOPT) $(CFLAGS_OPT) $(CFLAGS_PRIVATE)
+ CFLAGS_LEX=$(CFLAGS_NOWARN) $(CFLAGS_OPT)
+ CFLAGS_YACC=$(CFLAGS_NOWARN) $(CFLAGS_OPT) -DYY_USE_CONST
+diff -ur atm.orig/ilmid/Makefile atm/ilmid/Makefile
+--- atm.orig/ilmid/Makefile	Fri Apr  7 16:25:45 2000
++++ atm/ilmid/Makefile	Sat Nov  4 04:31:16 2000
+@@ -15,7 +15,7 @@
+ do_all: ilmid
+  
+ asn1/libasn1.a: 
+-	@cd asn1; make
++	@cd asn1; make CFLAGS="$(CFLAGS)"
+  
+ ilmid: asn1/libasn1.a $(OBJS)
+ 	$(CC) $(OBJS) $(LIBS) -o ilmid
+diff -ur atm.orig/ilmid/asn1/Makefile atm/ilmid/asn1/Makefile
+--- atm.orig/ilmid/asn1/Makefile	Tue Apr 22 04:10:19 1997
++++ atm/ilmid/asn1/Makefile	Wed Dec 29 20:08:15 1999
+@@ -1,5 +1,4 @@
+ CC = cc
+-CFLAGS = -O
+ LIBS = 
+ INCLUDES = 
+ SRCS = asn_len.c asn_tag.c asn_int.c asn_octs.c asn_bits.c str_stk.c \
+--- atm/test/Makefile~	Thu Feb 24 17:08:54 2000
++++ atm/test/Makefile	Wed Dec 20 23:36:48 2000
+@@ -7,7 +7,7 @@
+ include ../Rules.make
+ 
+ ttcp_atm.o:		ttcp.c ttcp.o
+-			gcc -c -w -O2 -o ttcp_atm.o ttcp.c -I../lib
++			gcc -c -w $(CFLAGS) -o ttcp_atm.o ttcp.c -I../lib
+ 
+ ttcp.o:			# dummy
+ 			touch ttcp.o
