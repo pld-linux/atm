@@ -1,14 +1,15 @@
-# $Revision: 1.6 $ $Date: 1999-11-08 19:46:37 $
+# $Revision: 1.7 $ $Date: 2000-01-07 21:13:23 $
 Summary:	ATM on Linux
 Summary(pl):	Obs³uga sieci ATM w Linuxie
 Name:		ATM
 Version:	0.62
-Release:	1
+Release:	3
 Copyright:	GPL
 Group:		Networking
 Group(pl):	Sieciowe
 Source0		ftp://lrcftp.epfl.ch/pub/linux/atm/dist/atm-%{version}.tar.gz
 Source1:	ATM-pldrc.tar.gz
+Patch:		ATM-opt.patch
 Buildroot:	/tmp/%{name}-%{version}-root
  
 %description
@@ -47,6 +48,7 @@ Linuxa.
 
 %prep
 %setup -q -n atm -b 1
+%patch0 -p1
 
 %build
 make depend
