@@ -1,4 +1,4 @@
-# $Revision: 1.34 $ $Date: 2003-06-10 14:03:11 $
+# $Revision: 1.35 $ $Date: 2003-07-29 15:12:19 $
 Summary:	ATM on Linux
 Summary(pl):	Obs³uga sieci ATM w Linuksie
 Name:		atm
@@ -14,7 +14,8 @@ Patch0:		%{name}-opt.patch
 Patch1:		%{name}-OPEN_MAX.patch
 Icon:		atm-logo.gif
 URL:		http://ica1www.epfl.ch/linux-atm/
-Prereq:		/sbin/chkconfig
+PreReq:		rc-scripts
+Requires(post,preun):	/sbin/chkconfig
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
@@ -53,7 +54,7 @@ Biblioteki i pliki nag³ówkowe niezbêdne do opracowywania aplikacji ATM
 dla Linuksa.
 
 %prep
-%setup -q -n atm -b 1
+%setup -q -n %{name} -b 1
 %patch0 -p1
 %patch1 -p1
 
