@@ -1,4 +1,4 @@
-# $Revision: 1.15 $ $Date: 2000-05-17 23:02:35 $
+# $Revision: 1.16 $ $Date: 2000-06-09 07:22:47 $
 Summary:	ATM on Linux
 Summary(pl):	Obs³uga sieci ATM w Linuxie
 Name:		atm
@@ -60,15 +60,15 @@ dla Linuxa.
 # gcc 2.95.x with optimizations turned on miscompiles atm 0.62!!!
 RPM_OPT_FLAGS=""
 export RPM_OPT_FLAGS
-make depend
-make 
+%{__make} depend
+%{__make} 
 
 %install
 rm -rf $RPM_BUILD_ROOT
 install -d $RPM_BUILD_ROOT/etc/sysconfig/{interfaces,network-scripts},rc.d/init.d}} \
 	$RPM_BUILD_ROOT{/var/log/atm,%{_sysconfdir}/atm}
 
-make install \
+%{__make} install \
 	INSTROOT=$RPM_BUILD_ROOT \
 	INSTPREFIX=$RPM_BUILD_ROOT%{_prefix} \
 	INSTMAN=$RPM_BUILD_ROOT%{_mandir}
