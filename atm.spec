@@ -1,9 +1,9 @@
-# $Revision: 1.13.2.12 $ $Date: 2001-06-05 19:02:32 $
+# $Revision: 1.13.2.13 $ $Date: 2001-06-15 15:50:41 $
 Summary:	ATM on Linux
 Summary(pl):	Obs³uga sieci ATM w Linuxie
 Name:		atm
 Version:	0.78
-Release:	8
+Release:	9
 License:	GPL
 Group:		Networking
 Group(de):	Netzwerkwesen
@@ -80,6 +80,7 @@ Summary(pl):    Obs³uga sieci ATM w Linuxie - skrypty startowe
 Group:          Base
 Requires:       %{name} = %{version}
 Requires:	rc-scripts >= 0.2.9
+Prereq:		/sbin/chkconfig
 
 %description rc-scripts
 rc-scripts for ATM support.
