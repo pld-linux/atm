@@ -30,3 +30,14 @@ diff -ur atm.orig/ilmid/asn1/Makefile atm/ilmid/asn1/Makefile
  LIBS = 
  INCLUDES = 
  SRCS = asn_len.c asn_tag.c asn_int.c asn_octs.c asn_bits.c str_stk.c \
+--- atm/test/Makefile~	Thu Feb 24 17:08:54 2000
++++ atm/test/Makefile	Wed Dec 20 23:36:48 2000
+@@ -7,7 +7,7 @@
+ include ../Rules.make
+ 
+ ttcp_atm.o:		ttcp.c ttcp.o
+-			gcc -c -w -O2 -o ttcp_atm.o ttcp.c -I../lib
++			gcc -c -w $(CFLAGS) -o ttcp_atm.o ttcp.c -I../lib
+ 
+ ttcp.o:			# dummy
+ 			touch ttcp.o
