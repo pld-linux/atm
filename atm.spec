@@ -1,4 +1,4 @@
-# $Revision: 1.24 $ $Date: 2001-10-08 08:53:48 $
+# $Revision: 1.25 $ $Date: 2002-01-18 02:12:26 $
 Summary:	ATM on Linux
 Summary(pl):	Obs³uga sieci ATM w Linuxie
 Name:		atm
