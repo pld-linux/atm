@@ -1,4 +1,4 @@
-# $Revision: 1.28 $ $Date: 2002-02-22 23:28:42 $
+# $Revision: 1.29 $ $Date: 2002-02-23 01:23:24 $
 Summary:	ATM on Linux
 Summary(pl):	Obs³uga sieci ATM w Linuxie
 Name:		atm
@@ -14,7 +14,7 @@ Icon:		atm-logo.gif
 URL:		http://ica1www.epfl.ch/linux-atm/
 Prereq:		/sbin/chkconfig
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
- 
+
 %description
 ATM (Asynchronous Transfer Mode) networking for Linux is still under
 development now but it works quite stable now and will most probably
@@ -27,14 +27,14 @@ servers, Multiprotocol Over ATM (MPOA) and some other goodies.
 
 %description -l pl
 Obs³uga sieci ATM (Asynchronous Transfer Mode) w Linuxie mimo i¿ jest
-jeszcze w stadium alfa dzia³a ju¿ bardzo stabilnie i najprawdopodobniej
-zostanie w³±czona do j±der serii 2.4.x. W Linuksie PLD sk³ada siê ona
-z ³at (patches) do bie¿±cej wersji j±dra zawieraj±cych sterowniki do
-kilku popularnych kart (m.in. Fore, Madge, IDT) i zapewniaj±cych
-zestawianie po³±czeñ PVC i SVC oraz zestawu programów i skryptów (ten
-pakiet) realizuj±cych najpopularniejsze us³ugi ATM, tj. Classical IP
-(IP over ATM), klientów i serwery LAN Emulation (LANE), Multiprotocol
-Over ATM (MPOA) i inne rozmaito¶ci.
+jeszcze w stadium alfa dzia³a ju¿ bardzo stabilnie i
+najprawdopodobniej zostanie w³±czona do j±der serii 2.4.x. W Linuksie
+PLD sk³ada siê ona z ³at (patches) do bie¿±cej wersji j±dra
+zawieraj±cych sterowniki do kilku popularnych kart (m.in. Fore, Madge,
+IDT) i zapewniaj±cych zestawianie po³±czeñ PVC i SVC oraz zestawu
+programów i skryptów (ten pakiet) realizuj±cych najpopularniejsze
+us³ugi ATM, tj. Classical IP (IP over ATM), klientów i serwery LAN
+Emulation (LANE), Multiprotocol Over ATM (MPOA) i inne rozmaito¶ci.
 
 %package devel
 Summary:	ATM on Linux - developer's package
@@ -46,7 +46,7 @@ Requires:	%{name} = %{version}
 Libraries and header files needed for development ATM applications for
 Linux.
 
-%description -l pl devel
+%description devel -l pl
 Biblioteki i pliki nag³ówkowe niezbêdne do opracowywania aplikacji ATM
 dla Linuksa.
 
@@ -61,7 +61,7 @@ dla Linuksa.
 RPM_OPT_FLAGS=""
 export RPM_OPT_FLAGS
 %{__make} depend
-%{__make} 
+%{__make}
 
 %install
 rm -rf $RPM_BUILD_ROOT
@@ -82,8 +82,8 @@ install config/pld/sysconfig/atm $RPM_BUILD_ROOT/etc/sysconfig/
 install config/pld/network-scripts/{ifup-atm,ifup-lec,ifdown-lec} \
 		$RPM_BUILD_ROOT/etc/sysconfig/network-scripts
 install config/pld/interfaces/{ifcfg-atm0,ifcfg-lec0} \
-		$RPM_BUILD_ROOT/etc/sysconfig/interfaces 
- 
+		$RPM_BUILD_ROOT/etc/sysconfig/interfaces
+
 gzip -9nf doc/usage.txt BUGS CREDITS CHANGES README config/pld/README.PLD
 
 %clean
