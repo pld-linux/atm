@@ -1,4 +1,4 @@
-# $Revision: 1.16 $ $Date: 2000-06-09 07:22:47 $
+# $Revision: 1.17 $ $Date: 2001-07-06 14:07:32 $
 Summary:	ATM on Linux
 Summary(pl):	Obs³uga sieci ATM w Linuxie
 Name:		atm
@@ -8,8 +8,9 @@ License:	GPL
 Group:		Networking
 Group(pl):	Sieciowe
 Source0:	ftp://lrcftp.epfl.ch/pub/linux/atm/dist/%{name}-%{version}.tar.gz
-Source1:	atm-pldrc.tar.gz
-Patch0:		atm-opt.patch
+Source1:	%{name}-pldrc.tar.gz
+Patch0:		%{name}-opt.patch
+Patch1:	        %{name}-OPEN_MAX.patch
 Icon:		atm-logo.gif
 URL:		http://ica1www.epfl.ch/linux-atm/
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
@@ -54,6 +55,7 @@ dla Linuxa.
 %prep
 %setup -q -n atm -b 1
 %patch0 -p1
+%patch1 -p1
 
 %build
 # Test it before removing!
