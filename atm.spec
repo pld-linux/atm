@@ -1,20 +1,22 @@
-# $Revision: 1.13.2.8 $ $Date: 2000-12-21 15:11:47 $
+# $Revision: 1.13.2.9 $ $Date: 2001-01-12 14:15:21 $
 Summary:	ATM on Linux
 Summary(pl):	Obs³uga sieci ATM w Linuxie
 Name:		atm
 Version:	0.78
-Release:	5
+Release:	6
 License:	GPL
 Group:		Networking
 Group(de):	Netzwerkwesen
 Group(pl):	Sieciowe
 URL:		http://ica1www.epfl.ch/linux-atm/
 Source0:	ftp://lrcftp.epfl.ch/pub/linux/atm/dist/%{name}-%{version}.tar.gz
-Source1:	%{name}-0.78.2-PLDrc.tar.gz
+Source1:	%{name}-0.78.3-PLDrc.tar.gz
+Source2:	http://home.sch.bme.hu/~cell/br2684/dist/001212/pppbr-001212-br2684ctl.c
 Patch0:		%{name}-opt.patch
 Patch1:		%{name}-OPEN_MAX.patch
 Patch2:		%{name}-syslog.patch
 Patch3:		%{name}-lresolv.patch
+Patch4:		%{name}-br2684ctl-syslog.patch
 Icon:		atm-logo.gif
 Requires:	rc-scripts >= 0.2.9
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
@@ -58,11 +60,13 @@ Biblioteki i pliki nag³ówkowe niezbêdne do opracowywania aplikacji ATM
 dla Linuxa.
 
 %prep
-%setup -q -n atm -b 1
+%setup -q -n atm -b1
+install -m644 %{SOURCE2} .
 %patch0 -p1
 %patch1 -p1
 %patch2 -p1
 %patch3 -p1
+%patch4 -p1
 
 %build
 # Test it before removing!
@@ -71,6 +75,8 @@ dla Linuxa.
 #export RPM_OPT_FLAGS
 %{__make} depend
 %{__make} CFLAGS_OPT="$RPM_OPT_FLAGS"
+
+gcc $RPM_OPT_FLAGS pppbr-001212-br2684ctl.c -o br2684ctl -lresolv -L./lib -latm
 
 %install
 rm -rf $RPM_BUILD_ROOT
@@ -81,6 +87,8 @@ install -d $RPM_BUILD_ROOT%{_sysconfdir}/{atm,sysconfig/{interfaces,network-scri
 	INSTROOT=$RPM_BUILD_ROOT \
 	INSTPREFIX=$RPM_BUILD_ROOT%{_prefix} \
 	INSTMAN=$RPM_BUILD_ROOT%{_mandir}
+
+install br2684ctl $RPM_BUILD_ROOT%{_sbindir}
 
 install config/common/hosts.atm $RPM_BUILD_ROOT%{_sysconfdir}
 install config/common/e164_cc $RPM_BUILD_ROOT%{_sysconfdir}
