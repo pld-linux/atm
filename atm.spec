@@ -1,4 +1,4 @@
-# $Revision: 1.5 $ $Date: 1999-11-02 12:54:38 $
+# $Revision: 1.6 $ $Date: 1999-11-08 19:46:37 $
 Summary:	ATM on Linux
 Summary(pl):	Obs³uga sieci ATM w Linuxie
 Name:		ATM
@@ -25,7 +25,7 @@ over ATM), LAN Emulation clients and servers, Multiprotocol Over ATM
 Obs³uga sieci ATM (Asynchronous Transfer Mode) w Linuxie mimo i¿ jest jeszcze
 w stadium alfa dzia³a ju¿ bardzo stabilnie i najproawdopodobniej zostanie
 w³±czona do j±der serii 2.4.x. W Linuxie PLD sk³ada siê ona z ³at (patches) do
-bie¿±cej wersji jadra zawieraj±cych drivery do kilku popularnych kart (m.in 
+bie¿±cej wersji j±dra zawieraj±cych sterowniki do kilku popularnych kart (m.in 
 Fore, Madge, IDT) i zapewniaj±cych zestawianie po³±czeñ PVC i SVC oraz zestawu 
 programów i skryptów (ten pakiet) realizuj±cych najpopularniejsze us³ugi
 ATM, tj. Classical IP (IP over ATM), klientów i serwery LAN Emulation (LANE),
