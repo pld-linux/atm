@@ -1,4 +1,4 @@
-# $Revision: 1.21 $ $Date: 2001-07-26 05:42:04 $
+# $Revision: 1.22 $ $Date: 2001-09-24 09:49:16 $
 Summary:	ATM on Linux
 Summary(pl):	Obs³uga sieci ATM w Linuxie
 Name:		atm
@@ -14,6 +14,7 @@ Patch0:		%{name}-opt.patch
 Patch1:		%{name}-OPEN_MAX.patch
 Icon:		atm-logo.gif
 URL:		http://ica1www.epfl.ch/linux-atm/
+Prereq:		/sbin/chkconfig
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
  
 %description
@@ -28,14 +29,14 @@ servers, Multiprotocol Over ATM (MPOA) and some other goodies.
 
 %description -l pl
 Obs³uga sieci ATM (Asynchronous Transfer Mode) w Linuxie mimo i¿ jest
-jeszcze w stadium alfa dzia³a ju¿ bardzo stabilnie i
-najproawdopodobniej zostanie w³±czona do j±der serii 2.4.x. W Linuxie
-PLD sk³ada siê ona z ³at (patches) do bie¿±cej wersji j±dra
-zawieraj±cych sterowniki do kilku popularnych kart (m.in Fore, Madge,
-IDT) i zapewniaj±cych zestawianie po³±czeñ PVC i SVC oraz zestawu
-programów i skryptów (ten pakiet) realizuj±cych najpopularniejsze
-us³ugi ATM, tj. Classical IP (IP over ATM), klientów i serwery LAN
-Emulation (LANE), Multiprotocol Over ATM (MPOA) i inne rozmaito¶ci.
+jeszcze w stadium alfa dzia³a ju¿ bardzo stabilnie i najprawdopodobniej
+zostanie w³±czona do j±der serii 2.4.x. W Linuksie PLD sk³ada siê ona
+z ³at (patches) do bie¿±cej wersji j±dra zawieraj±cych sterowniki do
+kilku popularnych kart (m.in. Fore, Madge, IDT) i zapewniaj±cych
+zestawianie po³±czeñ PVC i SVC oraz zestawu programów i skryptów (ten
+pakiet) realizuj±cych najpopularniejsze us³ugi ATM, tj. Classical IP
+(IP over ATM), klientów i serwery LAN Emulation (LANE), Multiprotocol
+Over ATM (MPOA) i inne rozmaito¶ci.
 
 %package devel
 Summary:	ATM on Linux - developer's package
@@ -48,11 +49,11 @@ Requires:	%{name} = %{version}
 
 %description devel
 Libraries and header files needed for development ATM applications for
-Linux
+Linux.
 
 %description -l pl devel
 Biblioteki i pliki nag³ówkowe niezbêdne do opracowywania aplikacji ATM
-dla Linuxa.
+dla Linuksa.
 
 %prep
 %setup -q -n atm -b 1
