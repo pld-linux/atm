@@ -1,8 +1,8 @@
-# $Revision: 1.13.2.1 $ $Date: 2000-04-20 13:08:40 $
+# $Revision: 1.13.2.2 $ $Date: 2000-05-09 20:01:39 $
 Summary:	ATM on Linux
 Summary(pl):	Obs³uga sieci ATM w Linuxie
 Name:		atm
-Version:	0.76
+Version:	0.77
 Release:	1
 Copyright:	GPL
 Group:		Networking
@@ -55,8 +55,8 @@ Linuxa.
 %build
 # Test it before removing!
 # gcc 2.95.x with optimizations turned on miscompiles atm 0.62!!!
-RPM_OPT_FLAGS=""
-export RPM_OPT_FLAGS
+#RPM_OPT_FLAGS=""
+#export RPM_OPT_FLAGS
 make depend
 make 
 
