@@ -1,4 +1,4 @@
-# $Revision: 1.37 $ $Date: 2003-10-06 20:58:13 $
+# $Revision: 1.38 $ $Date: 2005-12-12 13:44:45 $
 Summary:	ATM on Linux
 Summary(pl):	Obs³uga sieci ATM w Linuksie
 Name:		atm
@@ -14,8 +14,8 @@ Patch0:		%{name}-opt.patch
 Patch1:		%{name}-OPEN_MAX.patch
 Icon:		atm-logo.gif
 URL:		http://ica1www.epfl.ch/linux-atm/
-PreReq:		rc-scripts
 Requires(post,preun):	/sbin/chkconfig
+Requires:	rc-scripts
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
@@ -107,10 +107,10 @@ fi
 %files
 %defattr(644,root,root,755)
 %doc doc/usage.txt BUGS CREDITS CHANGES README config/pld/README.PLD
-%config(noreplace) %verify(not size mtime md5) %{_sysconfdir}/atm/*
-%config(noreplace) %verify(not size mtime md5) %{_sysconfdir}/hosts.atm
-%config(noreplace) %verify(not size mtime md5) /etc/sysconfig/interfaces/*
-%attr(640,root,root) %config(noreplace) %verify(not size mtime md5) /etc/sysconfig/atm
+%config(noreplace) %verify(not md5 mtime size) %{_sysconfdir}/atm/*
+%config(noreplace) %verify(not md5 mtime size) %{_sysconfdir}/hosts.atm
+%config(noreplace) %verify(not md5 mtime size) /etc/sysconfig/interfaces/*
+%attr(640,root,root) %config(noreplace) %verify(not md5 mtime size) /etc/sysconfig/atm
 %attr(755,root,root) /etc/sysconfig/network-scripts/*
 %attr(754,root,root) /etc/rc.d/init.d/atm
 %config %{_sysconfdir}/e164_cc
