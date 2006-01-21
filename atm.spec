@@ -1,4 +1,4 @@
-# $Revision: 1.38 $ $Date: 2005-12-12 13:44:45 $
+# $Revision: 1.39 $ $Date: 2006-01-21 00:01:16 $
 Summary:	ATM on Linux
 Summary(pl):	Obs³uga sieci ATM w Linuksie
 Name:		atm
@@ -12,7 +12,6 @@ Source1:	%{name}-pldrc.tar.gz
 # Source1-md5:	c69820b03d8241e4cab33fef681df222
 Patch0:		%{name}-opt.patch
 Patch1:		%{name}-OPEN_MAX.patch
-Icon:		atm-logo.gif
 URL:		http://ica1www.epfl.ch/linux-atm/
 Requires(post,preun):	/sbin/chkconfig
 Requires:	rc-scripts
