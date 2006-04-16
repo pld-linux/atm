@@ -1,4 +1,4 @@
-# $Revision: 1.39 $ $Date: 2006-01-21 00:01:16 $
+# $Revision: 1.40 $ $Date: 2006-04-16 20:18:47 $
 Summary:	ATM on Linux
 Summary(pl):	Obs³uga sieci ATM w Linuksie
 Name:		atm
@@ -13,6 +13,7 @@ Source1:	%{name}-pldrc.tar.gz
 Patch0:		%{name}-opt.patch
 Patch1:		%{name}-OPEN_MAX.patch
 URL:		http://ica1www.epfl.ch/linux-atm/
+BuildRequires:	rpmbuild(macros) >= 1.268
 Requires(post,preun):	/sbin/chkconfig
 Requires:	rc-scripts
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
@@ -91,15 +92,11 @@ rm -rf $RPM_BUILD_ROOT
 
 %post
 /sbin/chkconfig --add atm
-if [ -f /var/lock/subsys/atm ]; then
-	/etc/rc.d/init.d/atm restart 1>&2
-fi
+%service atm restart
 
 %preun
 if [ "$1" = "0" ]; then
-	if [ -f /var/lock/subsys/atm ]; then
-		/etc/rc.d/init.d/atm stop 1>&2
-	fi
+	%service atm stop
 	/sbin/chkconfig --del atm
 fi
 
