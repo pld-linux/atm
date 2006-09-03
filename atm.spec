@@ -1,4 +1,4 @@
-# $Revision: 1.40 $ $Date: 2006-04-16 20:18:47 $
+# $Revision: 1.41 $ $Date: 2006-09-03 11:16:23 $
 Summary:	ATM on Linux
 Summary(pl):	Obs³uga sieci ATM w Linuksie
 Name:		atm
@@ -43,7 +43,7 @@ Emulation (LANE), Multiprotocol Over ATM (MPOA) i inne rozmaito¶ci.
 Summary:	ATM on Linux - developer's package
 Summary(pl):	Obs³uga sieci ATM w Linuksie - biblioteki i pliki nag³ówkowe
 Group:		Development/Libraries
-Requires:	%{name} = %{version}
+Requires:	%{name} = %{version}-%{release}
 
 %description devel
 Libraries and header files needed for development ATM applications for
