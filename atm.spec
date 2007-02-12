@@ -1,6 +1,6 @@
-# $Revision: 1.42 $ $Date: 2007-02-12 00:48:39 $
+# $Revision: 1.43 $ $Date: 2007-02-12 21:23:48 $
 Summary:	ATM on Linux
-Summary(pl.UTF-8):   Obsługa sieci ATM w Linuksie
+Summary(pl.UTF-8):	Obsługa sieci ATM w Linuksie
 Name:		atm
 Version:	0.78
 Release:	1
@@ -41,7 +41,7 @@ Emulation (LANE), Multiprotocol Over ATM (MPOA) i inne rozmaitości.
 
 %package devel
 Summary:	ATM on Linux - developer's package
-Summary(pl.UTF-8):   Obsługa sieci ATM w Linuksie - biblioteki i pliki nagłówkowe
+Summary(pl.UTF-8):	Obsługa sieci ATM w Linuksie - biblioteki i pliki nagłówkowe
 Group:		Development/Libraries
 Requires:	%{name} = %{version}-%{release}
 
