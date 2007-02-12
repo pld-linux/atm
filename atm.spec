@@ -1,6 +1,6 @@
-# $Revision: 1.41 $ $Date: 2006-09-03 11:16:23 $
+# $Revision: 1.42 $ $Date: 2007-02-12 00:48:39 $
 Summary:	ATM on Linux
-Summary(pl):	Obs³uga sieci ATM w Linuksie
+Summary(pl.UTF-8):   ObsÅ‚uga sieci ATM w Linuksie
 Name:		atm
 Version:	0.78
 Release:	1
@@ -28,20 +28,20 @@ also includes programs and scripts providing the most popular ATM
 services, i.e. Classical IP (IP over ATM), LAN Emulation clients and
 servers, Multiprotocol Over ATM (MPOA) and some other goodies.
 
-%description -l pl
-Obs³uga sieci ATM (Asynchronous Transfer Mode) w Linuksie mimo i¿ jest
-jeszcze w stadium alfa dzia³a ju¿ bardzo stabilnie i
-najprawdopodobniej zostanie w³±czona do j±der serii 2.4.x. W Linuksie
-PLD sk³ada siê ona z ³at (patches) do bie¿±cej wersji j±dra
-zawieraj±cych sterowniki do kilku popularnych kart (m.in. Fore, Madge,
-IDT) i zapewniaj±cych zestawianie po³±czeñ PVC i SVC oraz zestawu
-programów i skryptów (ten pakiet) realizuj±cych najpopularniejsze
-us³ugi ATM, tj. Classical IP (IP over ATM), klientów i serwery LAN
-Emulation (LANE), Multiprotocol Over ATM (MPOA) i inne rozmaito¶ci.
+%description -l pl.UTF-8
+ObsÅ‚uga sieci ATM (Asynchronous Transfer Mode) w Linuksie mimo iÅ¼ jest
+jeszcze w stadium alfa dziaÅ‚a juÅ¼ bardzo stabilnie i
+najprawdopodobniej zostanie wÅ‚Ä…czona do jÄ…der serii 2.4.x. W Linuksie
+PLD skÅ‚ada siÄ™ ona z Å‚at (patches) do bieÅ¼Ä…cej wersji jÄ…dra
+zawierajÄ…cych sterowniki do kilku popularnych kart (m.in. Fore, Madge,
+IDT) i zapewniajÄ…cych zestawianie poÅ‚Ä…czeÅ„ PVC i SVC oraz zestawu
+programÃ³w i skryptÃ³w (ten pakiet) realizujÄ…cych najpopularniejsze
+usÅ‚ugi ATM, tj. Classical IP (IP over ATM), klientÃ³w i serwery LAN
+Emulation (LANE), Multiprotocol Over ATM (MPOA) i inne rozmaitoÅ›ci.
 
 %package devel
 Summary:	ATM on Linux - developer's package
-Summary(pl):	Obs³uga sieci ATM w Linuksie - biblioteki i pliki nag³ówkowe
+Summary(pl.UTF-8):   ObsÅ‚uga sieci ATM w Linuksie - biblioteki i pliki nagÅ‚Ã³wkowe
 Group:		Development/Libraries
 Requires:	%{name} = %{version}-%{release}
 
@@ -49,8 +49,8 @@ Requires:	%{name} = %{version}-%{release}
 Libraries and header files needed for development ATM applications for
 Linux.
 
-%description devel -l pl
-Biblioteki i pliki nag³ówkowe niezbêdne do opracowywania aplikacji ATM
+%description devel -l pl.UTF-8
+Biblioteki i pliki nagÅ‚Ã³wkowe niezbÄ™dne do opracowywania aplikacji ATM
 dla Linuksa.
 
 %prep
