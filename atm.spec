@@ -1,4 +1,3 @@
-# $Revision: 1.43 $ $Date: 2007-02-12 21:23:48 $
 Summary:	ATM on Linux
 Summary(pl.UTF-8):	Obsługa sieci ATM w Linuksie
 Name:		atm
